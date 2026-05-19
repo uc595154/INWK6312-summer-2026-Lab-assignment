@@ -1,0 +1,20 @@
+{% for router, data in routers.items() %}
+hostname {{ router }}
+
+interface Loopback0
+ ip address {{ data.loopback }}
+
+router ospf 1
+ router-id {{ data.loopback }}
+
+{% for intf in data.interfaces %}
+interface {{ intf.name }}
+ ip address {{ intf.ip }}
+ no shutdown
+
+router ospf 1
+ network {{ intf.ip }} area {{ intf.area }}
+{% endfor %}
+
+!
+{% endfor %}
