@@ -1,1 +1,1 @@
-This folder represents labdir created in the lab
+This folder represents labdir for Lab1B lab tasks
